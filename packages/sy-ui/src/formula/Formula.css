@@ -1,0 +1,5 @@
+@reference "../index.css";
+
+.nk-formula-value {
+  @apply bg-primary text-primary-foreground mx-1 inline-block rounded px-1 text-sm;
+}

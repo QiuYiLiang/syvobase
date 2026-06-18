@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+@source '../node_modules/streamdown/dist/*.js';
+
+@theme inline {
+  --color-background: var(--syvobase-background);
+  --color-foreground: var(--syvobase-foreground);
+  --color-card: var(--syvobase-card);
+  --color-card-foreground: var(--syvobase-card-foreground);
+  --color-popover: var(--syvobase-popover);
+  --color-popover-foreground: var(--syvobase-popover-foreground);
+  --color-primary: var(--syvobase-primary);
+  --color-primary-foreground: var(--syvobase-primary-foreground);
+  --color-secondary: var(--syvobase-secondary);
+  --color-secondary-foreground: var(--syvobase-secondary-foreground);
+  --color-muted: var(--syvobase-muted);
+  --color-muted-foreground: var(--syvobase-muted-foreground);
+  --color-accent: var(--syvobase-accent);
+  --color-accent-foreground: var(--syvobase-accent-foreground);
+  --color-destructive: var(--syvobase-destructive);
+  --color-destructive-foreground: var(--syvobase-destructive-foreground);
+  --color-border: var(--syvobase-border);
+  --color-input: var(--syvobase-input);
+  --color-ring: var(--syvobase-ring);
+  --color-chart-1: var(--syvobase-chart-1);
+  --color-chart-2: var(--syvobase-chart-2);
+  --color-chart-3: var(--syvobase-chart-3);
+  --color-chart-4: var(--syvobase-chart-4);
+  --color-chart-5: var(--syvobase-chart-5);
+  --color-sidebar: var(--syvobase-sidebar);
+  --color-sidebar-foreground: var(--syvobase-sidebar-foreground);
+  --color-sidebar-primary: var(--syvobase-sidebar-primary);
+  --color-sidebar-primary-foreground: var(--syvobase-sidebar-primary-foreground);
+  --color-sidebar-accent: var(--syvobase-sidebar-accent);
+  --color-sidebar-accent-foreground: var(--syvobase-sidebar-accent-foreground);
+  --color-sidebar-border: var(--syvobase-sidebar-border);
+  --color-sidebar-ring: var(--syvobase-sidebar-ring);
+
+  --radius-sm: calc(var(--syvobase-radius) - 4px);
+  --radius-md: calc(var(--syvobase-radius) - 2px);
+  --radius-lg: var(--syvobase-radius);
+  --radius-xl: calc(var(--syvobase-radius) + 4px);
+
+  --shadow-2xs: var(--syvobase-shadow-2xs);
+  --shadow-xs: var(--syvobase-shadow-xs);
+  --shadow-sm: var(--syvobase-shadow-sm);
+  --shadow: var(--syvobase-shadow);
+  --shadow-md: var(--syvobase-shadow-md);
+  --shadow-lg: var(--syvobase-shadow-lg);
+  --shadow-xl: var(--syvobase-shadow-xl);
+  --shadow-2xl: var(--syvobase-shadow-2xl);
+}
+
+html,
+body,
+#root {
+  @apply h-full w-full;
+
+  *:focus-visible {
+    @apply outline-none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-foreground/10;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-foreground/20;
+}
+
+::-webkit-scrollbar-corner {
+  display: block;
+}
+
+.flex-1 {
+  flex: 1;
+  overflow: auto;
+}

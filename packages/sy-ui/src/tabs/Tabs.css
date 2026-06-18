@@ -1,0 +1,7 @@
+@reference "../index.css";
+
+.nk-tabs {
+  .nk-tabs-list::-webkit-scrollbar {
+    display: none;
+  }
+}

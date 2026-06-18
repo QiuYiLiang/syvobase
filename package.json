@@ -1,0 +1,19 @@
+{
+  "name": "syvobase",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "update:latest": "turbo run update:latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^2.9.18"
+  },
+  "packageManager": "pnpm@11.3.0"
+}

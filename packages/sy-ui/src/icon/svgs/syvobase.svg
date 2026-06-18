@@ -1,0 +1,18 @@
+<svg
+  width="128"
+  height="128"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="9"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-dasharray="5.92 3.5"
+    stroke-dashoffset="17.1"
+  />
+</svg>

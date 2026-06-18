@@ -1,0 +1,261 @@
+@reference "../index.css";
+
+.nk-date-picker {
+  @apply border-border bg-background relative inline-flex h-8 overflow-hidden rounded-md border p-2 text-sm;
+  &.nk-date-picker-focused,
+  &:hover {
+    @apply ring-ring ring-2;
+  }
+  .nk-date-picker-input {
+    @apply w-full;
+    input {
+      @apply bg-background w-full;
+    }
+    @apply inline-flex;
+  }
+
+  .nk-date-picker-range-separator {
+    @apply h-3 w-10 text-center text-lg leading-3;
+  }
+  &.nk-date-picker-disabled {
+    @apply opacity-50;
+    &:hover {
+      @apply ring-0;
+    }
+  }
+}
+
+.nk-date-picker-dropdown-range {
+  @apply py-2;
+}
+.nk-date-picker-dropdown-placement-topLeft .nk-date-picker-range-arrow,
+.nk-date-picker-dropdown-placement-topRight .nk-date-picker-range-arrow {
+  bottom: 4px;
+  transform: rotate(135deg);
+}
+.nk-date-picker-dropdown-placement-bottomLeft .nk-date-picker-range-arrow,
+.nk-date-picker-dropdown-placement-bottomRight .nk-date-picker-range-arrow {
+  top: 4px;
+  transform: rotate(-45deg);
+}
+
+.nk-date-picker-dropdown {
+  @apply absolute z-9999999999999 min-w-0!;
+  pointer-events: all;
+  &.nk-date-picker-dropdown-hidden {
+    @apply hidden;
+  }
+  .nk-date-picker-range-arrow {
+    transition: all 0.3s;
+    @apply absolute z-[1px] size-[10px];
+    &:before,
+    &:after {
+      inset-inline-start: 50%;
+      box-sizing: border-box;
+      transform: translate(-50%, -50%);
+      content: '';
+      @apply absolute top-1/2;
+    }
+
+    &:before {
+      border-color: hsl(var(--syvobase-border)) hsl(var(--syvobase-border))
+        transparent transparent;
+      @apply size-[6px] border-[4.5px];
+    }
+    &:after {
+      border-color: hsl(var(--syvobase-popover)) hsl(var(--syvobase-popover))
+        transparent transparent;
+      @apply size-[6px] border-4;
+    }
+  }
+  .nk-date-picker-panel-layout {
+    @apply border-border bg-popover flex space-x-6 rounded-lg border p-4 pt-3 shadow;
+    .nk-date-picker-year-panel,
+    .nk-date-picker-month-panel,
+    .nk-date-picker-decade-panel,
+    .nk-date-picker-date-panel,
+    .nk-date-picker-datetime-panel {
+      @apply min-w-[266px];
+    }
+    .nk-date-picker-year-panel,
+    .nk-date-picker-month-panel,
+    .nk-date-picker-decade-panel {
+      .nk-date-picker-content {
+        tbody {
+          tr {
+            .nk-date-picker-cell {
+              @apply text-muted-foreground h-16 cursor-pointer text-center;
+              .nk-date-picker-cell-inner {
+                @apply w-full cursor-pointer rounded-md transition;
+                &:hover {
+                  @apply bg-secondary;
+                }
+              }
+              &.nk-date-picker-cell-in-view {
+                @apply text-foreground;
+              }
+            }
+          }
+        }
+      }
+    }
+    .nk-date-picker-presets {
+      ul {
+        li {
+          @apply cursor-pointer rounded p-1 text-sm;
+          &:hover {
+            @apply bg-primary text-primary-foreground;
+          }
+        }
+      }
+    }
+  }
+  .nk-date-picker-datetime-panel,
+  .nk-date-picker-panels {
+    @apply flex space-x-6;
+  }
+  .nk-date-picker-content {
+    @apply w-full;
+    tbody {
+      @apply space-y-2;
+      tr {
+        .nk-date-picker-cell {
+          @apply text-muted-foreground cursor-pointer text-center;
+          &.nk-date-picker-cell-disabled {
+            @apply opacity-20;
+          }
+          .nk-date-picker-cell-inner {
+            @apply cursor-pointer rounded-md transition;
+            &:hover {
+              @apply bg-secondary;
+            }
+          }
+          &.nk-date-picker-cell-in-view {
+            @apply text-foreground;
+          }
+        }
+      }
+    }
+  }
+  .nk-date-picker-date-panel,
+  .nk-date-picker-time-panel {
+    @apply flex flex-col;
+    table {
+      @apply border-separate border-spacing-0 text-center;
+    }
+    .nk-date-picker-content {
+      @apply w-full;
+      thead {
+        tr {
+          @apply flex justify-between;
+          th {
+            @apply size-9 text-center font-normal;
+          }
+        }
+      }
+      tbody {
+        @apply space-y-2;
+        tr {
+          .nk-date-picker-cell {
+            @apply text-muted-foreground cursor-pointer text-center;
+            &.nk-date-picker-cell-disabled {
+              @apply opacity-20;
+            }
+            .nk-date-picker-cell-inner {
+              @apply cursor-pointer rounded-md transition;
+              &:hover {
+                @apply bg-secondary;
+              }
+            }
+            &.nk-date-picker-cell-in-view {
+              @apply text-foreground;
+            }
+            &.nk-date-picker-cell-range-start > .nk-date-picker-cell-inner,
+            &.nk-date-picker-cell-range-end > .nk-date-picker-cell-inner,
+            &.nk-date-picker-cell-selected > .nk-date-picker-cell-inner {
+              @apply bg-primary text-primary-foreground rounded-md;
+            }
+            &.nk-date-picker-cell-range-start,
+            &.nk-date-picker-cell-range-end,
+            &.nk-date-picker-cell-in-range {
+              @apply bg-secondary;
+            }
+            &.nk-date-picker-cell-in-range {
+              &:first-child {
+                @apply rounded-l-md;
+              }
+              &:last-child {
+                @apply rounded-r-md;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .nk-date-picker-header {
+    @apply flex;
+    .nk-date-picker-header-view {
+      @apply flex flex-auto items-center justify-center font-bold;
+    }
+  }
+
+  .nk-date-picker-cell-inner {
+    @apply flex size-9 items-center justify-center text-sm;
+  }
+
+  .nk-date-picker-date-panel,
+  .nk-date-picker-time-panel {
+    @apply flex flex-col;
+  }
+  .nk-date-picker-date-panel table,
+  .nk-date-picker-time-panel table {
+    @apply border-separate border-spacing-0 text-center;
+  }
+  .nk-date-picker-date-panel,
+  .nk-date-picker-datetime-panel {
+    .nk-date-picker-header {
+      @apply mb-2;
+    }
+    tbody {
+      tr {
+        @apply block;
+      }
+    }
+  }
+  .nk-date-picker-datetime-panel {
+    .nk-date-picker-time-panel {
+      .nk-date-picker-header {
+        @apply mt-1 mb-3;
+      }
+      .nk-date-picker-content {
+        @apply relative flex max-h-[296px];
+      }
+      .nk-date-picker-time-panel-column {
+        @apply w-10 overflow-hidden;
+        &:hover {
+          @apply overflow-y-auto;
+        }
+        .nk-date-picker-time-panel-cell {
+          @apply text-foreground w-9 cursor-pointer text-sm;
+          &.nk-date-picker-time-panel-cell-disabled {
+            @apply opacity-50;
+          }
+          &.nk-date-picker-time-panel-cell-selected {
+            @apply bg-primary text-primary-foreground rounded-md;
+          }
+          .nk-date-picker-time-panel-cell-inner {
+            &:hover {
+              @apply bg-primary text-primary-foreground rounded-md;
+            }
+            @apply cursor-pointer p-px text-center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nk-date-picker-range-wrapper {
+  @apply flex;
+}

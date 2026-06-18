@@ -1,0 +1,65 @@
+import { describe, it, expect } from 'vitest'
+import { callMap } from '../callMap'
+
+describe('callMap', () => {
+  it('number functions', () => {
+    expect(callMap.MAX(1, 2, 3)).toBe(3)
+    expect(callMap.MIN(1, 2, 3)).toBe(1)
+    expect(callMap.AVG(2, 4, 6)).toBe(4)
+    expect(callMap.SUM(2, 4, 6)).toBe(12)
+    expect(callMap.ROUND(1.234, 2)).toBe(1.23)
+    expect(callMap.TRUNCATE(1.234, 2)).toBe(1.23)
+    expect(callMap.POWER(2, 3)).toBe(8)
+    expect(callMap.ABS(-5)).toBe(5)
+    expect(callMap.MOD(7, 3)).toBe(1)
+    expect(typeof callMap.RANDOM()).toBe('number')
+    expect(callMap.TOSTRING(123)).toBe('123')
+  })
+
+  it('date functions', () => {
+    expect(typeof callMap.NOW()).toBe('object')
+    expect(callMap.DATESTR('2025-08-19')).toBe('2025-08-19')
+    expect(callMap.EXTRACT('2025-08-19', 'year')).toBe(2025)
+    expect(callMap.DATEDELTA('2025-08-19', '2025-08-18')).toBe(1)
+    expect(callMap.DATEADD('2025-08-19', 1).getDate()).toBe(20)
+    expect(callMap.MONTHDAYS('2025-08-19')).toBe(31)
+    expect(callMap.DAYOFYEAR('2025-08-19')).toBe(231)
+    expect(callMap.WEEKOFYEAR('2025-08-19')).toBeGreaterThan(0)
+    expect(callMap.DATE(2025, 8, 19).getFullYear()).toBe(2025)
+    expect(callMap.WEEKDAYNUM('2025-08-19')).toBe(2)
+    expect(callMap.WEEKDAYSTR('2025-08-19')).toBe('周二')
+    expect(callMap.MONTHSTART('2025-08-19').getDate()).toBe(1)
+    expect(callMap.MONTHEND('2025-08-19').getDate()).toBe(31)
+    expect(
+      callMap.TIMESTAMPFORMAT('2025-08-19T12:34:56', 'yyyy-MM-dd HH:mm:ss')
+    ).toBe('2025-08-19 12:34:56')
+  })
+
+  it('text functions', () => {
+    expect(callMap.CONCAT('a', 'b')).toBe('ab')
+    expect(callMap.REPLACE('abcabc', 'a', 'x')).toBe('xbcxbc')
+    expect(callMap.INSERT('abc', 'x', 1)).toBe('axbc')
+    expect(callMap.LEFT('abc', 2)).toBe('ab')
+    expect(callMap.RIGHT('abc', 2)).toBe('bc')
+    expect(callMap.MID('abcde', 1, 3)).toBe('bcd')
+    expect(callMap.LEN('abc')).toBe(3)
+    expect(callMap.TRIM('  abc  ')).toBe('abc')
+    expect(callMap.LOCATE('b', 'abc')).toBe(1)
+    expect(callMap.IDCARDBIRTHDAY('11010519491231002X')).toBe('1949-12-31')
+    expect(callMap.IDCARDSEX('11010519491231002X')).toBe('女')
+    expect(callMap.TONUMBER('123')).toBe(123)
+  })
+
+  it('logic functions', () => {
+    expect(callMap.IF(true, 1, 2)).toBe(1)
+    expect(callMap.IF(false, 1, 2)).toBe(2)
+    expect(callMap.AND(true, true)).toBe(true)
+    expect(callMap.OR(false, true)).toBe(true)
+    expect(callMap.EMPTY('')).toBe(true)
+    expect(callMap.ISEMPTY(null)).toBe(true)
+    expect(callMap.ISNOTEMPTY('x')).toBe(true)
+    expect(callMap.EMPTYSTR()).toBe('')
+    expect(callMap.DEFAULTVALUE('', 'def')).toBe('def')
+    expect(callMap.IFS(true, 1, false, 2)).toBe(1)
+  })
+})

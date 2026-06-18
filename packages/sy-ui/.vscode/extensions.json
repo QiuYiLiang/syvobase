@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ryanluker.vscode-coverage-gutters",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vitest.explorer"
+  ]
+}

@@ -1,0 +1,45 @@
+@reference "../index.css";
+
+.nk-table {
+  & > tbody > tr:nth-last-child(2) > td,
+  & > tfoot > tr:last-child > td {
+    border-bottom: 0 !important;
+  }
+  & > * > tr > th:last-child,
+  & > * > tr > td:last-child {
+    border-right: 0 !important;
+  }
+}
+.nk-table-fixed-left::before {
+  content: '';
+  @apply absolute top-0 h-full;
+  box-shadow: rgba(5, 5, 5, 0.06) 10px 0px 8px -8px inset;
+  width: 30px;
+  right: -30px;
+  pointer-events: none;
+}
+.nk-table-fixed-right::before {
+  content: '';
+  @apply absolute top-0 h-full;
+  box-shadow: rgba(5, 5, 5, 0.06) -10px 0px 8px -8px inset;
+  width: 30px;
+  left: -30px;
+  pointer-events: none;
+}
+.nk-table-text-cell {
+  word-break: break-word;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.nk-table-cell {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
