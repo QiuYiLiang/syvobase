@@ -1,27 +1,10 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
 import dts from 'vite-plugin-dts'
-import fs from 'fs'
 
 const isDev = process.env.NODE_ENV === 'development'
 const srcPath = path.resolve(__dirname, 'src')
 const indexEntry = path.join(srcPath, 'index.ts')
-
-const entries = fs
-  .readdirSync(srcPath)
-  .filter((componentName) =>
-    fs.existsSync(path.join(srcPath, componentName, 'index.ts'))
-  )
-  .reduce(
-    (ret, componentName) => {
-      const entry = path.join(srcPath, componentName, 'index.ts')
-      ret[componentName] = entry
-      return ret
-    },
-    {
-      index: indexEntry,
-    } as Record<string, string>
-  )
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -42,15 +25,16 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: entries,
+      entry: {
+        index: indexEntry,
+      },
       formats: ['es', 'cjs'],
       fileName: (format: string, name: string) => `${name}.${format}.js`,
     },
     rollupOptions: {
-      external: [],
+      external: ['zod', 'dayjs'],
     },
-    minify: !isDev ? 'esbuild' : false,
-    cssMinify: !isDev,
+    minify: !isDev,
     sourcemap: isDev,
     emptyOutDir: !isDev,
   },

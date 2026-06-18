@@ -1,10 +1,10 @@
 {
-  "name": "@syvobase/shared",
+  "name": "@syvobase/schema",
   "private": true,
   "version": "0.0.0",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "vite build -w",
+    "dev": "cross-env NODE_ENV=development vite build -w",
     "build": "vite build",
     "test": "vitest run --coverage",
     "lint": "eslint \"src/**/*.ts\" --fix",
@@ -16,26 +16,23 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
-    },
-    "./*": {
-      "types": "./dist/*.d.ts",
-      "import": "./dist/*.es.js",
-      "require": "./dist/*.cjs.js"
     }
   },
   "dependencies": {
-    "@syvobase/utils": "workspace:^",
-    "uuid": "^13.0.0"
+    "dayjs": "^1.11.19",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/node": "^25.0.7",
+    "@types/react": "^19.2.8",
     "@vitest/coverage-v8": "^4.0.17",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "eslint-plugin-import": "^2.32.0",
     "globals": "^17.0.0",
     "prettier": "^3.7.4",
-    "typeorm": "^0.3.28",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.0",
     "vite": "8.0.0-beta.5",

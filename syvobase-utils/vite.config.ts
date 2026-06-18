@@ -49,7 +49,7 @@ export default defineConfig({
     rollupOptions: {
       external: [],
     },
-    minify: !isDev ? 'esbuild' : false,
+    minify: !isDev,
     cssMinify: !isDev,
     sourcemap: isDev,
     emptyOutDir: !isDev,
